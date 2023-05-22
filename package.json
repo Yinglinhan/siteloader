@@ -1,0 +1,23 @@
+{
+  "name": "siteloader-vanilla",
+
+  "version": "0.0.1",
+  "type": "module",
+  "files": ["dist"],
+  "main": "./dist/sl.umd.cjs",
+  "module": "./dist/sl.js",
+  "exports": {
+    ".": {
+      "import": "./dist/sj.js",
+      "require": "./dist/sj.umd.cjs"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^4.3.8"
+  }
+}
