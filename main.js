@@ -1,5 +1,6 @@
 
-import SiteLoader from "./siteLoader.js";
+import SiteLoader from "https://www.unpkg.com/siteloader/dist/sl.js";
+// import SiteLoader from 'siteloader'
 
 
 console.log(999)

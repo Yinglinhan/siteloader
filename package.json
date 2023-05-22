@@ -1,9 +1,10 @@
 {
   "name": "siteloader",
-
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/sl.umd.cjs",
   "module": "./dist/sl.js",
   "keywords": [
@@ -14,8 +15,8 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/sj.js",
-      "require": "./dist/sj.umd.cjs"
+      "import": "./dist/sl.js",
+      "require": "./dist/sl.umd.cjs"
     }
   },
   "scripts": {
@@ -25,5 +26,8 @@
   },
   "devDependencies": {
     "vite": "^4.3.8"
+  },
+  "dependencies": {
+    "siteloader": "^0.0.3"
   }
 }
