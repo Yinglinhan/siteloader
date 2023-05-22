@@ -1,11 +1,17 @@
 {
   "name": "siteloader",
 
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "files": ["dist"],
   "main": "./dist/sl.umd.cjs",
   "module": "./dist/sl.js",
+  "keywords": [
+    "loading",
+    "loader",
+    "loading-bar",
+    "progress"
+  ],
   "exports": {
     ".": {
       "import": "./dist/sj.js",
