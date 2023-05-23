@@ -3,8 +3,8 @@
 // import SiteLoader from 'siteloader'
 
 
-console.log(siteLoader)
-const sl = new siteLoader(
+console.log(1, SiteLoader)
+const sl = new SiteLoader(
   [
     {
       sources: [

@@ -167,7 +167,7 @@ class i {
   // 用来控制加载进度目标的方法 
   _trueLoadControl() {
     const e = this._loadedCount / this._allRourceCount;
-    (e * 100 - this._queneCompareNum > 25 || e === 1) && (this._queneCompareNum = e * 100, this._targetProgress = Math.ceil(e * 60) + 20, e === 1 && (this._targetProgress = 100, this._events.trueLoadFinish && this._events.trueLoadFinish()), console.log("jin"));
+    (e * 100 - this._queneCompareNum > 25 || e === 1) && (this._queneCompareNum = e * 100, this._targetProgress = Math.ceil(e * 60) + 20, e === 1 && (this._targetProgress = 100, this._events.trueLoadFinish && this._events.trueLoadFinish()));
   }
   // 整个加载进度包括计数到100之后调用的方法
   _loadFinish() {

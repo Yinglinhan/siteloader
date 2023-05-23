@@ -66,7 +66,7 @@ ESM模式 npm包安装模式
 
 
 UMD模式 html页面引入 
-通过全局变量 siteLoader（注意这里L是大写）访问和使用
+通过全局变量 SiteLoader（注意这里大小写）访问和使用
 
 ```jsx
 <script src="https://www.unpkg.com/siteloader"></script>
