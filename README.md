@@ -1,5 +1,5 @@
 
-<h1 align="center">
+<h4 align="center">
 
 <p>
   <img alt="siteLoader logo" src="https://github.com/Yinglinhan/siteloader/blob/main/public/mdresource/logo.png?raw=true">
@@ -7,7 +7,8 @@
 <p>
   <img alt="line" src="https://github.com/Yinglinhan/siteloader/blob/main/public/mdresource/line.png?raw=true">
 </p>
-
+<br />
+<br />
 <p>
  <img alt="me" src="https://github.com/Yinglinhan/siteloader/blob/main/public/mdresource/me.png?raw=true">
 </p>
@@ -20,7 +21,7 @@
 
 
 
-</h1>
+</h4>
 
 ## What is it / 有什么用
 
@@ -218,4 +219,14 @@ sl.startLoad()
 
 ## Other Info / 其他信息
 
-交流微信
+#### 我的其他分享
+
+- [👉 所有视频分享尽在我的B站](https://space.bilibili.com/345880241)
+- [👉 GSAP中文教程于文档](https://gsap.framer.wiki/)
+- [👉 Framer-Motion中文文档教程](https://motion.framer.wiki/)
+
+
+#### 我的课程
+- [👉 《JavaScript高手之路全能课》](https://www.bilibili.com/cheese/play/ss1226)
+
+#### 我的微信
