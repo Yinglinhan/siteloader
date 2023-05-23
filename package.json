@@ -1,11 +1,11 @@
 {
   "name": "siteloader",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "files": [
     "dist"
   ],
-  "main": "./dist/sl.umd.cjs",
+  "main": "./dist/sl.umd.js",
   "module": "./dist/sl.js",
   "keywords": [
     "loading",
@@ -16,7 +16,7 @@
   "exports": {
     ".": {
       "import": "./dist/sl.js",
-      "require": "./dist/sl.umd.cjs"
+      "require": "./dist/sl.umd.js" 
     }
   },
   "scripts": {

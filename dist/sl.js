@@ -56,7 +56,7 @@ class i {
   }
   setTargetTextDom(e) {
     const t = document.querySelector(e);
-    this._targetTextDom = t, console.log(111111);
+    this._targetTextDom = t;
   }
   startLoad() {
     this._events.beforeStart && this._events.beforeStart(), this._loaderInit(), this._progressDetect();
@@ -171,7 +171,7 @@ class i {
   }
   // 整个加载进度包括计数到100之后调用的方法
   _loadFinish() {
-    console.log("结束嘞"), clearInterval(this._progressDetectTimer), clearInterval(this._progressChangeTimer), this._events.countComplete && this._events.countComplete();
+    clearInterval(this._progressDetectTimer), clearInterval(this._progressChangeTimer), this._events.countComplete && this._events.countComplete();
   }
   // 设置事件的方法
   addEventListener(e, t) {

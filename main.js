@@ -1,10 +1,10 @@
 
-import SiteLoader from "https://www.unpkg.com/siteloader/dist/sl.js";
+// import SiteLoader from "https://www.unpkg.com/siteloader/dist/sl.js";
 // import SiteLoader from 'siteloader'
 
 
-console.log(999)
-const sl = new SiteLoader(
+console.log(siteLoader)
+const sl = new siteLoader(
   [
     {
       sources: [

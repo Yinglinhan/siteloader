@@ -225,7 +225,7 @@ sl.startLoad()
 - [👉 GSAP中文教程于文档](https://gsap.framer.wiki/)
 
   <a href="https://gsap.framer.wiki/">
-  <img src="https://github.com/Yinglinhan/siteloader/blob/main/public/mdresource/gsap-cover.png?raw=true" style="border-radius: 6px;width:200px"/>
+  <img src="https://github.com/Yinglinhan/siteloader/blob/main/public/mdresource/gsap-cover.png?raw=true" style="border-radius: 6px;width:200px;"/>
   </a>
 
 - [👉 Framer-Motion中文文档教程](https://motion.framer.wiki/)
@@ -239,7 +239,7 @@ sl.startLoad()
 - [👉 《JavaScript高手之路全能课》](https://www.bilibili.com/cheese/play/ss1226)
 
   <a href="https://www.bilibili.com/cheese/play/ss1226">
-    <img src="https://github.com/Yinglinhan/siteloader/blob/main/public/mdresource/course-cover.png?raw=true" style="border-radius: 6px;width:200px"/>
+    <img src="https://github.com/Yinglinhan/siteloader/blob/main/public/mdresource/course-cover.png?raw=true" style="border-radius: 6px;width:200px;"/>
   </a>
 #### 我的微信
-  <img src="https://github.com/Yinglinhan/siteloader/blob/main/public/mdresource/qrcode.JPG?raw=true" style="border-radius: 6px;width:200px"/>
+  <img src="https://github.com/Yinglinhan/siteloader/blob/main/public/mdresource/qrcode.JPG?raw=true" style="border-radius: 6px;width:200px;"/>
