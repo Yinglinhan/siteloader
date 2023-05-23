@@ -1,6 +1,6 @@
 {
   "name": "siteloader",
-  "version": "0.0.72",
+  "version": "0.0.73",
   "type": "module",
   "files": [
     "dist"
@@ -23,7 +23,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
-  }
+  },
+  "license": "MIT"
 
 
 }
