@@ -28,3 +28,6 @@ dist-ssr
 # 额外不需要版本管理的文件
 public/resources
 vite.config.js
+*.mp4
+doc.md
+md.css
