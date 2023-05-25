@@ -11,7 +11,7 @@ class i {
     this._allResorceData = e, this._allRourceCount = 0, this._allDoms = {
       imgsDoms: [],
       mediaDoms: []
-    }, this._isStageLoad = e.length > 1, this._stageDoms = [], this._stageResourceCount = {}, this._stageResourceLoadedCount = {}, this._targetTextDom = null, this._targetProgress = 20, this._preProgress = 0, this._queneCompareNum = 0, this._loadedCount = 0, this._progress = 0, this._progressDetectTimer = null, this._progressChangeTimer = null, this._events = {
+    }, this._isStageLoad = e.length > 1, this._stageDoms = [], this._stageResourceCount = {}, this._stageResourceLoadedCount = {}, this._targetTextDom = null, this._targetProgress = 20, this._queneCompareNum = 0, this._loadedCount = 0, this._progress = 0, this._progressChangeTimer = null, this._events = {
       beforeStart: null,
       countComplete: null,
       trueLoadFinish: null,
@@ -156,13 +156,11 @@ class i {
   // 加载整体进度的检测方法 不管是分阶段加载还是整体加载都会调用
   _progressDetect() {
     const e = () => {
-      this._progress++, this._targetTextDom && (this._targetTextDom.innerText = this._progress), this._events.progress({
+      this._progress < this._targetProgress && (this._progress++, this._targetTextDom && (this._targetTextDom.innerText = this._progress), this._events.progress({
         progress: this._progress
-      }), this._progress === this._targetProgress && clearInterval(this._progressChangeTimer), this._progress === 100 && this._loadFinish(), this._progress < 50 && this._preProgress === 100 && this.needSpeedUp && (clearInterval(this._progressChangeTimer), this._progressChangeTimer = setInterval(e, 0), this.needSpeedUp = !1);
+      }), this._progress === this._targetProgress && clearInterval(this._progressChangeTimer), this._progress === 100 && this._loadFinish(), this._progress < 50 && this._preProgress === 100 && this.needSpeedUp && (clearInterval(this._progressChangeTimer), this._progressChangeTimer = setInterval(e, 0), this.needSpeedUp = !1));
     };
-    this._progressDetectTimer = setInterval(() => {
-      this._targetProgress !== this._preProgress && (this._preProgress = this._targetProgress, clearInterval(this._progressChangeTimer), this._progressChangeTimer = setInterval(e, this.progressSpeed));
-    }, 100);
+    this._progressChangeTimer = setInterval(e, this.progressSpeed);
   }
   // 用来控制加载进度目标的方法 
   _trueLoadControl() {
@@ -171,7 +169,7 @@ class i {
   }
   // 整个加载进度包括计数到100之后调用的方法
   _loadFinish() {
-    clearInterval(this._progressDetectTimer), clearInterval(this._progressChangeTimer), this._events.countComplete && this._events.countComplete();
+    clearInterval(this._progressChangeTimer), this._events.countComplete && this._events.countComplete();
   }
   // 设置事件的方法
   addEventListener(e, t) {
