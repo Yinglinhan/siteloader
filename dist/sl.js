@@ -1,4 +1,4 @@
-class i {
+class l {
   /**
     * @typedef {Object} StageObj - 特别的
     * @property {String} [stageName] - 如果不分阶段加载的话就不需要这个属性
@@ -11,7 +11,7 @@ class i {
     this._allResorceData = e, this._allRourceCount = 0, this._allDoms = {
       imgsDoms: [],
       mediaDoms: []
-    }, this._isStageLoad = e.length > 1, this._stageDoms = [], this._stageResourceCount = {}, this._stageResourceLoadedCount = {}, this._targetTextDom = null, this._targetProgress = 20, this._queneCompareNum = 0, this._loadedCount = 0, this._progress = 0, this._progressChangeTimer = null, this._events = {
+    }, this._allResourcesTag = {}, this._isStageLoad = e.length > 1, this._stageDoms = [], this._stageResourceCount = {}, this._stageResourceLoadedCount = {}, this._targetTextDom = null, this._targetProgress = 20, this._queneCompareNum = 0, this._loadedCount = 0, this._progress = 0, this._progressChangeTimer = null, this._events = {
       beforeStart: null,
       countComplete: null,
       trueLoadFinish: null,
@@ -74,10 +74,14 @@ class i {
     this._stageResourceCount[e.stageName] = 0, this._stageResourceLoadedCount[e.stageName] = 0, e.sources.forEach((t) => {
       this._stageDoms[e.stageName] = this._stageDoms[e.stageName] || {}, this._stageDoms[e.stageName][t.sourceType] = this._stageDoms[e.stageName][t.sourceType] || [], t.sourceType === "image" ? t.selectors.forEach((s) => {
         const r = document.querySelectorAll(s);
-        this._stageDoms[e.stageName][t.sourceType] = [...this._stageDoms[e.stageName][t.sourceType], ...r], this._allRourceCount += r.length, this._stageResourceCount[e.stageName] += r.length;
+        r.forEach((o) => {
+          this._allResourcesTag[o.currentSrc || o.src] = !1;
+        }), this._stageDoms[e.stageName][t.sourceType] = [...this._stageDoms[e.stageName][t.sourceType], ...r], this._allRourceCount += r.length, this._stageResourceCount[e.stageName] += r.length;
       }) : t.sourceType === "media" && t.selectors.forEach((s) => {
         const r = document.querySelectorAll(s);
-        this._stageDoms[e.stageName][t.sourceType] = [...this._stageDoms[e.stageName][t.sourceType], ...r], this._allRourceCount += r.length, this._stageResourceCount[e.stageName] += r.length;
+        r.forEach((o) => {
+          this._allResourcesTag[o.src] = !1;
+        }), this._stageDoms[e.stageName][t.sourceType] = [...this._stageDoms[e.stageName][t.sourceType], ...r], this._allRourceCount += r.length, this._stageResourceCount[e.stageName] += r.length;
       });
     });
   }
@@ -86,16 +90,40 @@ class i {
     e.sources.forEach((t) => {
       t.sourceType === "image" ? t.selectors.forEach((s) => {
         const r = document.querySelectorAll(s);
-        this._allDoms.imgsDoms = [...this._allDoms.imgsDoms, ...r], this._allRourceCount += r.length;
+        r.forEach((o) => {
+          this._allResourcesTag[o.currentSrc || o.src] = !1;
+        }), this._allDoms.imgsDoms = [...this._allDoms.imgsDoms, ...r], this._allRourceCount += r.length;
       }) : t.sourceType === "media" && t.selectors.forEach((s) => {
         const r = document.querySelectorAll(s);
-        this._allDoms.mediaDoms = [...this._allDoms.mediaDoms, ...r], this._allRourceCount += r.length;
+        r.forEach((o) => {
+          this._allResourcesTag[o.src] = !1;
+        }), this._allDoms.mediaDoms = [...this._allDoms.mediaDoms, ...r], this._allRourceCount += r.length;
       });
     });
   }
   // 整体加载调用的方法
   _allLoad() {
     this._allDoms.imgsDoms.length > 0 && this._loadAllImg(), this._allDoms.mediaDoms.length > 0 && this._loadAllMedia();
+  }
+  // 整体加载的图片加载方法
+  _loadAllImg() {
+    this._allDoms.imgsDoms.forEach((e) => {
+      e.onload = () => {
+        this._allResourcesTag[e.currentSrc || e.src] || (this._loadedCount++, this._trueLoadControl(), this._allResourcesTag[e.currentSrc || e.src] = !0);
+      }, e.onerror = () => {
+        this._allResourcesTag[e.currentSrc || e.src] || (this._errorLoad("图片", e.currentSrc || e.src), this._allResourcesTag[e.currentSrc || e.src] = !0);
+      }, e.src = e.currentSrc || e.src;
+    });
+  }
+  // 整体加载的媒体加载方法
+  _loadAllMedia() {
+    this._allDoms.mediaDoms.forEach((e) => {
+      e.addEventListener("canplaythrough", () => {
+        this._allResourcesTag[e.src] || (this._loadedCount++, this._trueLoadControl(), this._allResourcesTag[e.src] = !0);
+      }), e.addEventListener("error", () => {
+        this._allResourcesTag[e.src] || (this._errorLoad("音频/视频", e.currentSrc || e.src), this._allResourcesTag[e.src] = !0);
+      }), e.src = e.currentSrc || e.src;
+    });
   }
   // 分阶段加载调用的方法
   _mutileStageStartLoad(e) {
@@ -107,9 +135,9 @@ class i {
   _loadStageImg(e, t) {
     e.forEach((s) => {
       s.onload = () => {
-        this._stageResourceLoadedCount[t]++, this._loadedCount++, this._stageLoadCheck(t), this._trueLoadControl();
+        this._allResourcesTag[s.currentSrc || s.src] || (this._stageResourceLoadedCount[t]++, this._loadedCount++, this._stageLoadCheck(t), this._trueLoadControl(), this._allResourcesTag[s.currentSrc || s.src] = !0);
       }, s.onerror = () => {
-        this._errorLoad("图片", s.currentSrc || s.src);
+        this._allResourcesTag[s.currentSrc || s.src] || (this._errorLoad("图片", s.currentSrc || s.src), this._allResourcesTag[s.currentSrc || s.src] = !0);
       }, s.src = s.currentSrc || s.src;
     });
   }
@@ -117,9 +145,9 @@ class i {
   _loadStageMedia(e, t) {
     e.forEach((s) => {
       s.addEventListener("canplaythrough", () => {
-        this._stageResourceLoadedCount[t]++, this._loadedCount++, this._stageLoadCheck(t), this._trueLoadControl();
+        this._allResourcesTag[s.src] || (this._stageResourceLoadedCount[t]++, this._loadedCount++, this._stageLoadCheck(t), this._trueLoadControl(), this._allResourcesTag[s.src] = !0);
       }), s.addEventListener("error", () => {
-        this._errorLoad("音频/视频", s.currentSrc || s.src);
+        this._allResourcesTag[s.src] || (this._errorLoad("音频/视频", s.currentSrc || s.src), this._allResourcesTag[s.src] = !0);
       }), s.src = s.currentSrc || s.src;
     });
   }
@@ -132,26 +160,6 @@ class i {
         this._mutileStageStartLoad(this._allResorceData[s + 1].stageName);
       }
     }));
-  }
-  // 整体加载的图片加载方法
-  _loadAllImg() {
-    this._allDoms.imgsDoms.forEach((e) => {
-      e.onload = () => {
-        this._loadedCount++, this._trueLoadControl();
-      }, e.onerror = () => {
-        this._errorLoad("图片", e.currentSrc || e.src);
-      }, e.src = e.currentSrc || e.src;
-    });
-  }
-  // 整体加载的媒体加载方法
-  _loadAllMedia() {
-    this._allDoms.mediaDoms.forEach((e) => {
-      e.addEventListener("canplaythrough", () => {
-        this._loadedCount++, this._trueLoadControl();
-      }), e.addEventListener("error", () => {
-        this._errorLoad("音频/视频", e.currentSrc || e.src);
-      }), e.src = e.currentSrc || e.src;
-    });
   }
   // 加载整体进度的检测方法 不管是分阶段加载还是整体加载都会调用
   _progressDetect() {
@@ -180,5 +188,5 @@ class i {
   }
 }
 export {
-  i as default
+  l as default
 };
