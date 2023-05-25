@@ -33,7 +33,7 @@ sl.addEventListener('progress', (e) => {
 
 sl.setTargetTextDom('.loading-num')
 
-sl.needSpeedUp = true
+// sl.needSpeedUp = true
 sl.startLoad()
 
 

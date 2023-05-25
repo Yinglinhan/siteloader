@@ -158,7 +158,7 @@ class i {
     const e = () => {
       this._progress < this._targetProgress && (this._progress++, this._targetTextDom && (this._targetTextDom.innerText = this._progress), this._events.progress({
         progress: this._progress
-      }), this._progress === this._targetProgress && clearInterval(this._progressChangeTimer), this._progress === 100 && this._loadFinish(), this._progress < 50 && this._preProgress === 100 && this.needSpeedUp && (clearInterval(this._progressChangeTimer), this._progressChangeTimer = setInterval(e, 0), this.needSpeedUp = !1));
+      }), this._progress === this._targetProgress && clearInterval(this._progressChangeTimer), this._progress === 100 && this._loadFinish(), this._progress < 60 && this._targetProgress === 100 && this.needSpeedUp && (clearInterval(this._progressChangeTimer), this._progressChangeTimer = setInterval(e, 0), this.needSpeedUp = !1));
     };
     this._progressChangeTimer = setInterval(e, this.progressSpeed);
   }
