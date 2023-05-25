@@ -31,3 +31,4 @@ vite.config.js
 *.mp4
 doc.md
 md.css
+lib
