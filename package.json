@@ -1,6 +1,6 @@
 {
   "name": "siteloader",
-  "version": "0.0.76",
+  "version": "0.0.77",
   "type": "module",
   "files": [
     "dist"
@@ -16,7 +16,7 @@
   "exports": {
     ".": {
       "import": "./dist/sl.js",
-      "require": "./dist/sl.umd.js" 
+      "require": "./dist/sl.umd.js"
     }
   },
   "scripts": {
@@ -24,7 +24,8 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
 
-
+  }
 }
