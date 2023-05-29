@@ -1,7 +1,7 @@
 
 // import SiteLoader from "https://www.unpkg.com/siteloader/dist/sl.js";
-// import SiteLoader from 'siteloader'
-import SiteLoader from "./lib/siteLoader"
+import SiteLoader from 'siteloader'
+// import SiteLoader from "./lib/siteLoader"
 
 import * as THREE from 'three'
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
