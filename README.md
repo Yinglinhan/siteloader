@@ -45,6 +45,8 @@
 
 ## Usage / 使用方法
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Y1Z4yAu5V8c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ### 引入代码
 
 ESM模式 CDN
