@@ -46,7 +46,12 @@
 ## Usage / 使用方法
 
 
-演示视频
+演示视频 
+[ 👉bilibili ](https://www.bilibili.com/video/BV1Mm4y147px/) 
+[ 👉youtube ](https://www.youtube.com/watch?v=Y1Z4yAu5V8c)
+<p>
+ <img alt="me" style="border-radius: 6px;width:180px" src="https://github.com/Yinglinhan/siteloader/blob/main/public/mdresource/siteloader-cover.png?raw=true">
+</p>
 
 ### 引入代码
 
